@@ -25,13 +25,13 @@ const itemsBetween = items.filter((item) => {
   return item.price > 14 && item.price < 18;
 });
 
-let htmlStr = '';
+let itemsBetweenHtmlStr = '';
 
 for (let i = 0; i < itemsBetween.length; i++) {
-  htmlStr += '<div>' + [i + 1] + '.' + itemsBetween[i].title + '</div>';
+  itemsBetweenHtmlStr += '<div>' + [i + 1] + '.' + itemsBetween[i].title + '</div>';
 }
 
-document.getElementById('answer2').innerHTML = htmlStr;
+document.getElementById('answer2').innerHTML = itemsBetweenHtmlStr;
 
 
 // Problem #3
@@ -41,7 +41,7 @@ const gbpCurrency = items.find((el) => {
   return el.currency_code === 'GBP';
 });
 
-document.getElementById('answer3'.innerHTML = gbpCurrency.title + ' ' + gbpCurrency.price;
+document.getElementById('answer3').innerHTML = gbpCurrency.title + 'is priced at: ' + gbpCurrency.price + ' GBP';
 
 
 
@@ -51,13 +51,13 @@ const wood = items.filter((el) => {
   return el.materials.includes('wood');
 });
 
-let htmlStr = '';
+let woodHtmlStr = '';
 
 for (let i = 0; i < wood.length; i++) {
-  htmlStr += '<div>' + wood[i].title + '</div>'
+  woodHtmlStr += '<div>' + [i + 1] + '.' + wood[i].title + '</div>'
 }
 
-document.getElementById('answer4').innerHTML = htmlStr;
+document.getElementById('answer4').innerHTML = woodHtmlStr;
 
 
 // Problem #5
@@ -66,31 +66,26 @@ const eight = items.filter((el) => {
   return el.materials.length >= 8;
 });
 
-let htmlStr = '';
+let eightHtmlStr = '';
 
 for (let i = 0; i < eight.length; i++) {
   const item = eight[i];
   let materialStr = '';
 
   for (let j = 0; j < item.materials.length; j++) {
-    materialStr += `<li>${item.materials[i]}</li>`;
+    materialStr += `<div>- ${item.materials[j]}</div>`;
   }
 
-  htmlStr += `<div>${i + 1}. ${item.title} is made of ${item.materials.length} items: ${materialStr}</div>`
+  eightHtmlStr += `<div>${i + 1}. <b>${item.title}</b> is made of <b>${item.materials.length}</b> items: ${materialStr}</div>`
 }
 
-
-// You should be able to target the DOM element 'answer5' and use .innerHTML to render the answer
-
+document.getElementById('answer5').innerHTML = eightHtmlStr;
 
 
-
-// ------------------------------------------------------------------------------------
 // Problem #6
 // How many items were made by their sellers?
+const sellerMade = items.filter((el) => {
+  return el.who_made === 'i_did';
+});
 
-
-
-
-// You should be able to target the DOM element 'answer6' and use .innerHTML to render the answer
-// ------------------------------------------------------------------------------------
+document.getElementById('answer6').innerHTML = sellerMade.length;
